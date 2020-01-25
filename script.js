@@ -84,7 +84,7 @@ console.log(funnel("eave", "leave"));
 console.log(funnel("sleet", "lets"));
 console.log(funnel("skiff", "ski")); */
 
-//[2019-11-11] Challenge #381 [Easy] Yahtzee Upper Section Scoring
+/*//[2019-11-11] Challenge #381 [Easy] Yahtzee Upper Section Scoring
 //Your task is to find the maximum possible score for this roll in the upper section of the Yahtzee score card.
 //https://www.reddit.com/r/dailyprogrammer/comments/dv0231/20191111_challenge_381_easy_yahtzee_upper_section/
 
@@ -111,7 +111,7 @@ const yahtzeeScore = (arr) => {
     };})
     
     let oneScore = oneCount * 1;
-    let twoScore = twoCount * 1;
+    let twoScore = twoCount * 2;
     let threeScore = threeCount * 3;
     let fourScore = fourCount * 4;
     let fiveScore = fiveCount * 5;
@@ -120,4 +120,35 @@ const yahtzeeScore = (arr) => {
     return Math.max(oneScore, twoScore, threeScore, fourScore, fiveScore, sixScore);
 };
 
-console.log(yahtzeeScore([1, 2, 3, 3, 4]))
+console.log(yahtzeeScore([2, 3, 5, 5, 6]))*/
+
+//[2018-06-11] Challenge #363 [Easy] I before E except after C
+//Write a function that tells you whether or not a given word follows the "I before E except after C" rule.
+//https://www.reddit.com/r/dailyprogrammer/comments/8q96da/20180611_challenge_363_easy_i_before_e_except/
+
+const ruleCheck = str => {
+    let ieIndex = str.indexOf('ie');
+    let eiIndex = str.indexOf('ei');
+    
+    if (!str.includes('ie') && !str.includes('ei')) {
+        return true;
+    } else if (str.includes('ie')) {
+        if (str[ieIndex - 1] === 'c') {
+            return false;
+        } else {
+            return true;
+        }
+    } else if (str.includes('ei')) {
+        if (str[eiIndex - 1] === 'c') {
+            return true;
+        } else {
+            return false;
+        }
+    } 
+};
+
+console.log(ruleCheck('a')); //true
+console.log(ruleCheck('zombie')); //true
+console.log(ruleCheck('transceiver')); //false
+console.log(ruleCheck('veil')); //false
+console.log(ruleCheck('icier')); //true
